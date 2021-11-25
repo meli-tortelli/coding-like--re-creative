@@ -16,7 +16,7 @@ const settings = {
 const sketch = ({ context, width, height }) => {
   const agents = []
 
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < random.range(50, 200); i++) {
     const x = random.range(0, width)
     const y = random.range(0, height)
 
@@ -32,6 +32,10 @@ const sketch = ({ context, width, height }) => {
 
       for (let j = i + 0; j < agents.length; j++) {
         const other = agents[j]
+
+        const dist = agent.pos.getDistance(other.pos)
+
+        if (dist > 200) continue
 
         context.beginPath()
         context.moveTo(agent.pos.x, agent.pos.y)
@@ -54,6 +58,13 @@ class Vector {
   constructor(x, y) {
     this.x = x
     this.y = y
+  }
+
+  getDistance(v) {
+    const dx = this.x - v.x
+    const dy = this.y - v.y
+
+    return Math.sqrt(dx * dx + dy * dy)
   }
 }
 
