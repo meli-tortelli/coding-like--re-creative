@@ -58,13 +58,13 @@ const sketch = () => {
 
       // const background = 'rgba: [ 0, 255, 0, 0.25 ]'
       // const foreground = 'rgba(250, 0, 0, 0.5)'
-      // const colors = Color.style([10, 55, 0, 0.25])
+      const colors = Color.style([10, 55, 0, 0.25])
 
       context.beginPath()
       context.moveTo(w * -0.5, 0)
       context.lineTo(w * 0.5, 0)
-      // context.fillStyle = colors
-      // context.fillRect(0, 0, cellw * 0.4, cellh * 0.1)
+      context.fillStyle = colors
+      context.fillRect(5, 0, cellw * 0.5, cellh * 0.5)
       context.stroke()
       context.restore()
     }
