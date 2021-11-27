@@ -41,12 +41,12 @@ const sketch = () => {
       const w = cellw * 0.8
       const h = cellh * 0.8
 
-      const n = random.noise2D(x + frame * 8, y, 0.001)
+      const n = random.noise2D(x + frame * 30, y, 0.001)
       const angle = n * Math.PI * 0.2
 
       // const scale = ((n + 1) / 2) * 30
       // const scale = (n * 0.5 + 0.5) * 30
-      const scale = math.mapRange(n, -1, 1, 1, 30)
+      const scale = math.mapRange(n, 0, 1, 2, 30)
 
       context.save()
       context.translate(x, y)
@@ -58,14 +58,15 @@ const sketch = () => {
 
       // const background = 'rgba: [ 0, 255, 0, 0.25 ]'
       // const foreground = 'rgba(250, 0, 0, 0.5)'
-      const colors = Color.style([10, 55, 0, 0.25])
+      const colors = Color.style([124, 45, 18, 0.25])
 
       context.beginPath()
-      context.moveTo(w * -0.5, 0)
-      context.lineTo(w * 0.5, 0)
+      context.moveTo(w * -0.5, 1)
+      context.lineTo(w * 0.5, 1)
       context.fillStyle = colors
-      context.fillRect(5, 0, cellw * 0.5, cellh * 0.5)
+      context.fillRect(0, 0, cellw * 0.5, cellh * 0.5)
       context.stroke()
+
       context.restore()
     }
   }
