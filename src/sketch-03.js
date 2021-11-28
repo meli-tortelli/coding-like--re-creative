@@ -11,18 +11,18 @@ const settings = {
 const sketch = () => {
   return ({ context, width, height, frame }) => {
     //setting a bg gradiente color
-    const fill = context.createLinearGradient(-0, 0, 0, height)
+    const fill = context.createLinearGradient(0, 0, 0, height)
 
     fill.addColorStop(0, 'red')
     fill.addColorStop(1, 'green')
     fill.addColorStop(0, 'yellow')
 
-    context.fillStyle = fill
-    context.fillRect(width / 2, height * 0.5, width, height)
+    // context.fillStyle = fill
+    // context.fillRect(width / 2, height / 2, width, height)
 
     //grid area
-    const cols = 15
-    const rows = 20
+    const cols = 10
+    const rows = 10
     const numCells = rows * cols //total of cells
 
     const gridw = width * 0.8 //width of 80% of the canvas
@@ -41,12 +41,12 @@ const sketch = () => {
       const w = cellw * 0.5
       const h = cellh * 0.5
 
-      const n = random.noise2D((x / frame) * 5, h, 0.008)
+      const n = random.noise2D(x + frame * 5, h, 0.001, 10)
       const angle = n * Math.PI * 0.2
 
       // const scale = ((n + 1) / 2) * 30
       // const scale = (n * 0.5 + 0.5) * 30
-      const scale = math.mapRange(0, 0, 0, 0, 0)
+      const scale = math.mapRange(1, -2, 1, 2, 3)
 
       //centralized in canvas
       context.save()
@@ -63,8 +63,7 @@ const sketch = () => {
 
       context.beginPath(width / 2)
       context.moveTo(w / 1, h * 0.1)
-      context.lineTo(-50, 5)
-      context.lineTo(-30, 25)
+      context.lineTo(-5, 5)
       // context.fillStyle = colors
       // context.fillRect(width / 2, 0, cellw * 0.5, cellh * 0.5)
       context.stroke()
