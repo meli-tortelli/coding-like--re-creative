@@ -64,8 +64,9 @@ const sketch = () => {
       context.beginPath(width / 2)
       context.moveTo(w / 1, h * 0.1)
       context.lineTo(-5, 5)
+
       // context.fillStyle = colors
-      // context.fillRect(width / 2, 0, cellw * 0.5, cellh * 0.5)
+      // context.fillRect(2, 2, cellw * 0.5, cellh * 0.5)
       context.stroke()
 
       context.restore()
