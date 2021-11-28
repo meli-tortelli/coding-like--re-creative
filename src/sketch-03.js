@@ -18,7 +18,7 @@ const sketch = () => {
     fill.addColorStop(0, 'yellow')
 
     context.fillStyle = fill
-    context.fillRect(0, 0, width, height)
+    context.fillRect(width / 2, 0, width, height)
 
     //grid area
     const cols = 10
@@ -38,16 +38,17 @@ const sketch = () => {
 
       const x = col * cellw
       const y = row * cellh
-      const w = cellw * 0.8
-      const h = cellh * 0.8
+      const w = cellw * 0.5
+      const h = cellh * 0.5
 
-      const n = random.noise2D(x + frame * 30, y, 0.001)
+      const n = random.noise2D(x + frame * 10, h, 0.001)
       const angle = n * Math.PI * 0.2
 
       // const scale = ((n + 1) / 2) * 30
       // const scale = (n * 0.5 + 0.5) * 30
-      const scale = math.mapRange(n, 0, 1, 2, 30)
+      const scale = math.mapRange(0, 0, 1, 1, 30)
 
+      //centralized in canvas
       context.save()
       context.translate(x, y)
       context.translate(margx, margy)
@@ -60,11 +61,11 @@ const sketch = () => {
       // const foreground = 'rgba(250, 0, 0, 0.5)'
       const colors = Color.style([124, 45, 18, 0.25])
 
-      context.beginPath()
-      context.moveTo(w * -0.5, 1)
-      context.lineTo(w * 0.5, 1)
-      context.fillStyle = colors
-      context.fillRect(0, 0, cellw * 0.5, cellh * 0.5)
+      context.beginPath(width / 2)
+      context.moveTo(w / 2, 5)
+      context.lineTo(20, 150)
+      // context.fillStyle = colors
+      // context.fillRect(width / 2, 0, cellw * 0.5, cellh * 0.5)
       context.stroke()
 
       context.restore()
